@@ -1,6 +1,6 @@
 # Table of Contents
 - [Variables](readme.md#Variables)
-	- [Declaration and Definition](readme.md#Declaration%20and%20Definition)
+	- [Declaration and Definition](readme.md#Declaration-and-Definition)
 	- [Types](readme.md#Types)
 	- [Conversion](readme.md#Conversion)
 	- [Pointers](readme.md#Pointers)

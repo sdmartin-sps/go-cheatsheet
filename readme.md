@@ -1,7 +1,28 @@
 # Table of Contents
 - [Variables](readme.md#Variables)
+	- [Declaration and Definition](readme.md#Declaration%20and%20Definition)
+	- [Types](readme.md#Types)
+	- [Conversion](readme.md#Conversion)
+	- [Pointers](readme.md#Pointers)
+- [Complex Data Types](readme.md#Complex%20Data%20Types)
+	- [Structs](readme.md#Structs)
+	- [Arrays](readme.md#Arrays)
+	- [Slices](readme.md#Slices)
+	- [Maps](readme.md#Maps)
+	- [Interfaces](readme.md#Interfaces)
+		- [Empty Interface](#Empty%20Interface)
+		- [Type Switching](readme.md#Type%20Switching)
+		- [Stringer](readme.md#Stringer)
+- [Functions](readme.md#Functions)
+	- [Methods](readme.md#Methods)
+- [Conditionals](readme.md#Conditionals)
+- [Loops](readme.md#Loops)
+	- [Range in Loops](readme.md#Range%20in%20Loops)
+- [I/O and formatting](readme.md#I/O%20and%20formatting)
+- [Async](readme.md#Async)
+- [Packages and Modules](readme.md#Packages%20and%20Modules)
 
-# Variables
+# Variables 
 ## Declaration and Definition
 Variables can be declared with 
 ```go
@@ -61,6 +82,7 @@ fmt.Println(*p) // read i through pointer p :: 42
 *p = 21 // set i through pointer p :: dereference
 ```
 
+# Complex Data Types
 ## Structs
 ```go
 type Vertex struct {
@@ -340,68 +362,6 @@ func (f NewFloat) MethodName float64 {
 f := NewFloat(5.0).MethodName()
 ```
 
-# I/O and formatting
-To gain access to printing functions included in the standard library, you import "fmt"
-```go
-import (
-	"fmt"
-)
-...
-fmt.Printf("Hello, world")
-
-name := "sam"
-s := fmt.Sprintf("hello %v", name) // create a string with formatting
-```
-[More information about fmt package and formatting](https://pkg.go.dev/fmt)
-This includes
-- functions
-- format specifiers
-- examples
-
-# Loops
-
-There is only a for loop in go
-```go
-for i := 0 i < 10 i++ {
-	...
-}
-```
-
-To simulate a while loop, go makes the init and post statements optional
-```go
-for ; i < 10 ; {
-	... // i must already be declared
-}
-// you can also omit the semicolons
-for i < 10 {
-	...
-}
-```
-
-A loop forever can be even further simplified
-```go
-for {
-	...
-}
-```
-
-## Range in Loops
-```go
-a := []int{1, 2, 3, 4, 5}
-for i, v := range a {
-	// range operates on slices or maps
-	// it returns the index and value (or key and value)
-	...
-}
-
-// it's possible to omit either variable
-for _, v := range a 
-for i, _ := range a
-// or just use the index
-for i := range a 
-
-```
-
 # Conditionals
 If statements
 ```go
@@ -447,6 +407,68 @@ switch {
 		// does get called
 }
 ```
+
+# Loops
+
+There is only a for loop in go
+```go
+for i := 0 i < 10 i++ {
+	...
+}
+```
+
+To simulate a while loop, go makes the init and post statements optional
+```go
+for ; i < 10 ; {
+	... // i must already be declared
+}
+// you can also omit the semicolons
+for i < 10 {
+	...
+}
+```
+
+A loop forever can be even further simplified
+```go
+for {
+	...
+}
+```
+
+## Range in Loops
+```go
+a := []int{1, 2, 3, 4, 5}
+for i, v := range a {
+	// range operates on slices or maps
+	// it returns the index and value (or key and value)
+	...
+}
+
+// it's possible to omit either variable
+for _, v := range a 
+for i, _ := range a
+// or just use the index
+for i := range a 
+
+```
+
+# I/O and formatting
+To gain access to printing functions included in the standard library, you import "fmt"
+```go
+import (
+	"fmt"
+)
+...
+fmt.Printf("Hello, world")
+
+name := "sam"
+s := fmt.Sprintf("hello %v", name) // create a string with formatting
+```
+[More information about fmt package and formatting](https://pkg.go.dev/fmt)
+This includes
+- functions
+- format specifiers
+- examples
 
 # Async
 You can defer statements to be called at the end of the current function. 

@@ -1,5 +1,5 @@
-# Packages and Modules
-
+# Table of Contents
+- [Variables](readme.md#Variables)
 
 # Variables
 ## Declaration and Definition
@@ -42,7 +42,7 @@ complex64, complex128 // more functionality with math/cmplx
 ```
 
 ## Conversion
-You can convert to a different type by using that type as a function. This must be done, or Go will panic. 
+You can convert to a different type by using that type as a function. Go does not do this automatically for any types and if it is not done, this will cause a panic.
 ```go
 var i int = 20
 var u uint = uint(i)
@@ -280,7 +280,6 @@ a := Person{"Sam", 21}
 fmt.Println(a) // -> Sam (21 years)
 ```
 
-
 # Functions
 Defining functions
 ```go
@@ -341,6 +340,68 @@ func (f NewFloat) MethodName float64 {
 f := NewFloat(5.0).MethodName()
 ```
 
+# I/O and formatting
+To gain access to printing functions included in the standard library, you import "fmt"
+```go
+import (
+	"fmt"
+)
+...
+fmt.Printf("Hello, world")
+
+name := "sam"
+s := fmt.Sprintf("hello %v", name) // create a string with formatting
+```
+[More information about fmt package and formatting](https://pkg.go.dev/fmt)
+This includes
+- functions
+- format specifiers
+- examples
+
+# Loops
+
+There is only a for loop in go
+```go
+for i := 0 i < 10 i++ {
+	...
+}
+```
+
+To simulate a while loop, go makes the init and post statements optional
+```go
+for ; i < 10 ; {
+	... // i must already be declared
+}
+// you can also omit the semicolons
+for i < 10 {
+	...
+}
+```
+
+A loop forever can be even further simplified
+```go
+for {
+	...
+}
+```
+
+## Range in Loops
+```go
+a := []int{1, 2, 3, 4, 5}
+for i, v := range a {
+	// range operates on slices or maps
+	// it returns the index and value (or key and value)
+	...
+}
+
+// it's possible to omit either variable
+for _, v := range a 
+for i, _ := range a
+// or just use the index
+for i := range a 
+
+```
+
 # Conditionals
 If statements
 ```go
@@ -387,59 +448,6 @@ switch {
 }
 ```
 
-# Printing and Formatting
-To gain access to printing functions included in the standard library, you import "fmt"
-```go
-import (
-	"fmt"
-)
-...
-fmt.Printf("Hello, world")
-```
-
-# Loops
-There is only a for loop in go
-```go
-for i := 0 i < 10 i++ {
-	...
-}
-```
-
-To simulate a while loop, go makes the init and post statements optional
-```go
-for ; i < 10 ; {
-	... // i must already be declared
-}
-// you can also omit the semicolons
-for i < 10 {
-	...
-}
-```
-
-A loop forever can be even further simplified
-```go
-for {
-	...
-}
-```
-
-## Range in Loops
-```go
-a := []int{1, 2, 3, 4, 5}
-for i, v := range a {
-	// range operates on slices or maps
-	// it returns the index and value (or key and value)
-	...
-}
-
-// it's possible to omit either variable
-for _, v := range a 
-for i, _ := range a
-// or just use the index
-for i := range a 
-
-```
-
 # Async
 You can defer statements to be called at the end of the current function. 
 ```go
@@ -450,3 +458,6 @@ func main() {
 ```
 this will print `hello( \n )world`. Deferred statements will print in the reverse order they were called, so defer statements at the bottom of the function will be called before those stated at the top of the function.
 Basically a stack using LIFO
+
+# Packages and Modules
+
